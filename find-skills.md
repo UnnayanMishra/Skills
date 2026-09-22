@@ -13,10 +13,10 @@ order and stop at the first match:
 ## Step 1: Check the personal Skills library (only external source)
 
 Repo: `https://github.com/UnnayanMishra/Skills`, cloned locally at
-`~/Documents/Skills-Library/`.
+`/Users/unnayanmishra/Documents/Skills/knowledge-base/`.
 
 1. Pull the latest before searching, so a stale local clone doesn't hide a skill that
-   was added elsewhere: `cd ~/Documents/Skills-Library && git pull`.
+   was added elsewhere: `cd /Users/unnayanmishra/Documents/Skills/knowledge-base && git pull`.
 2. Grep/search it for a file matching the task (by topic, not just filename — a
    `.md` there may describe a skill without being named after it exactly).
 3. If found: use it as-is. Do not fall through to the steps below.
@@ -45,7 +45,7 @@ justify a skill (not a one-off):
    `~/.claude/skills/<task-name>/SKILL.md` (global, only if clearly reusable across
    projects).
 4. If the skill is generic enough to be useful in *other* projects too, also add a
-   copy to `~/Documents/Skills-Library/` and push it, so Step 1 finds it next time
+   copy to `/Users/unnayanmishra/Documents/Skills/knowledge-base/` and push it, so Step 1 finds it next time
    instead of it being rebuilt from scratch elsewhere.
 
 ## Why this order
