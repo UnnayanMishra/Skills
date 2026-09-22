@@ -24,10 +24,21 @@ Repo: `https://github.com/UnnayanMishra/Skills`, cloned locally at
 
 1. Pull the latest before searching, so a stale local clone doesn't hide a skill that
    was added elsewhere: `cd /Users/unnayanmishra/Documents/Skills/knowledge-base && git pull`.
-2. Grep/search `skills/` there (`skills/<task-name>/SKILL.md`, one folder per skill —
-   same shape as `.claude/skills/`) for a file matching the task, by topic, not just
-   filename.
-3. If found: use it as-is. Do not fall through to the steps below.
+2. Grep/search `skills/` there. In this repo skills are stored **flat** —
+   `skills/<task-name>.md`, one file per skill, no per-skill folder — for a file
+   matching the task, by topic, not just filename.
+3. If found: this file is content only, not an installable skill yet — a project's
+   `.claude/skills/` needs the `<name>/SKILL.md` folder shape. Convert it locally
+   before using it:
+   ```
+   mkdir -p .claude/skills/<task-name>
+   cp /Users/unnayanmishra/Documents/Skills/knowledge-base/skills/<task-name>.md \
+      .claude/skills/<task-name>/SKILL.md
+   ```
+   (or `~/.claude/skills/<task-name>/SKILL.md` for a global install). Do this
+   conversion every time a library skill is used — the flat `.md` in the library is
+   never itself the thing that gets loaded as a skill. Do not fall through to the
+   steps below once converted and in place.
 
 ## Step 2: Check local skills
 
@@ -71,9 +82,11 @@ justify a skill (not a one-off):
    `~/.claude/skills/<task-name>/SKILL.md` (global, only if clearly reusable across
    projects).
 6. If the skill is generic enough to be useful in *other* projects too, also add a
-   copy to `/Users/unnayanmishra/Documents/Skills/knowledge-base/skills/<task-name>/`
-   and push it, so Step 1 finds it next time instead of it being rebuilt from scratch
-   elsewhere.
+   **flat copy** — `/Users/unnayanmishra/Documents/Skills/knowledge-base/skills/<task-name>.md`,
+   not a folder — and push it, so Step 1 finds it next time instead of it being
+   rebuilt from scratch elsewhere. (The working copy stays a proper
+   `<task-name>/SKILL.md` folder in `.claude/skills/`; only the library copy is
+   flattened.)
 
 ## Why this order
 
